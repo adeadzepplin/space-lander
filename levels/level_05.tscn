@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/asteroid.tscn" id="2_asteroid"]
+[ext_resource type="PackedScene" path="res://scenes/landing_pad.tscn" id="3_pad"]
+[ext_resource type="PackedScene" path="res://scenes/mine.tscn" id="4_mine"]
+
+[node name="Level05" type="Node2D"]
+script = ExtResource("1_level")
+level_name = "Gravity Well"
+briefing = "A heavy asteroid pulls hard. The pad is on the far side of its tiny neighbour."
+fuel_capacity = 70.0
+camera_zoom = 0.85
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(-700, -650)
+
+[node name="Heavy" parent="." instance=ExtResource("2_asteroid")]
+radius = 320.0
+roughness = 0.15
+shape_seed = 42
+surface_gravity = 70.0
+gravity_range = 3.0
+rock_color = Color(0.36, 0.25, 0.22, 1)
+
+[node name="Tiny" parent="." instance=ExtResource("2_asteroid")]
+position = Vector2(650, -450)
+radius = 90.0
+shape_seed = 9
+surface_gravity = 20.0
+
+[node name="LandingPad" parent="Tiny" instance=ExtResource("3_pad")]
+position = Vector2(73.7, -51.6)
+width = 70.0
+
+[node name="Mine1" parent="." instance=ExtResource("4_mine")]
+position = Vector2(300, -650)
+patrol_offset = Vector2(0, 250)
+
+[node name="Mine2" parent="." instance=ExtResource("4_mine")]
+position = Vector2(850, -650)

@@ -1,0 +1,63 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/asteroid.tscn" id="2_asteroid"]
+[ext_resource type="PackedScene" path="res://scenes/landing_pad.tscn" id="3_pad"]
+[ext_resource type="PackedScene" path="res://scenes/mine.tscn" id="4_mine"]
+[ext_resource type="PackedScene" path="res://scenes/fuel_pickup.tscn" id="5_fuel"]
+
+[node name="Level04" type="Node2D"]
+script = ExtResource("1_level")
+level_name = "Minefield"
+briefing = "Thread the mines. Grab the fuel canister on the way."
+fuel_capacity = 45.0
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(-900, -300)
+
+[node name="Rock" parent="." instance=ExtResource("2_asteroid")]
+position = Vector2(-200, 300)
+radius = 90.0
+roughness = 0.2
+shape_seed = 11
+surface_gravity = 30.0
+
+[node name="Target" parent="." instance=ExtResource("2_asteroid")]
+position = Vector2(700, 250)
+radius = 280.0
+shape_seed = 33
+surface_gravity = 45.0
+
+[node name="LandingPad" parent="Target" instance=ExtResource("3_pad")]
+position = Vector2(-95.8, -263.1)
+
+[node name="Fuel" parent="." instance=ExtResource("5_fuel")]
+position = Vector2(-100, -80)
+
+[node name="Mine1" parent="." instance=ExtResource("4_mine")]
+position = Vector2(-500, -420)
+
+[node name="Mine2" parent="." instance=ExtResource("4_mine")]
+position = Vector2(-500, -150)
+
+[node name="Mine3" parent="." instance=ExtResource("4_mine")]
+position = Vector2(-300, -300)
+patrol_offset = Vector2(0, 220)
+
+[node name="Mine4" parent="." instance=ExtResource("4_mine")]
+position = Vector2(100, -350)
+
+[node name="Mine5" parent="." instance=ExtResource("4_mine")]
+position = Vector2(100, -120)
+patrol_offset = Vector2(0, 160)
+patrol_time = 2.0
+
+[node name="Mine6" parent="." instance=ExtResource("4_mine")]
+position = Vector2(300, -250)
+
+[node name="Mine7" parent="." instance=ExtResource("4_mine")]
+position = Vector2(400, -450)
+patrol_offset = Vector2(200, 0)
+
+[node name="Mine8" parent="." instance=ExtResource("4_mine")]
+position = Vector2(480, -120)

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/asteroid.tscn" id="2_asteroid"]
+[ext_resource type="PackedScene" path="res://scenes/landing_pad.tscn" id="3_pad"]
+
+[node name="Level01" type="Node2D"]
+script = ExtResource("1_level")
+level_name = "First Touch"
+briefing = "Drift down and touch the green pad gently."
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(-250, -620)
+
+[node name="Home" parent="." instance=ExtResource("2_asteroid")]
+radius = 260.0
+roughness = 0.1
+shape_seed = 3
+
+[node name="LandingPad" parent="Home" instance=ExtResource("3_pad")]
+position = Vector2(0, -260)

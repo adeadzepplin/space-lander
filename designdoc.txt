@@ -1,0 +1,19 @@
+Space lander game.
+the player flies through levels and attempts to land on a platform to complete the level.
+the game takes place in an asteroid field. theres gravity to worry about.
+the lander platform goal is on an asteroid.
+player times are tracked. they can repeat levels to get a faster time. race against ghosts.
+
+the game project will be setup so that the lander and level are in scenes.
+I want to be able to use the godot editor to place objects and curate my own levels.
+
+the game should be polished as well.
+there will be different scenarios in the levels.
+
+
+
+
+
+
+
+

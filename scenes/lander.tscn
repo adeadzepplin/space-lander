@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/lander.gd" id="1_lander"]
+[ext_resource type="Script" path="res://scripts/lander_visual.gd" id="2_visual"]
+[ext_resource type="Script" path="res://scripts/engine_audio.gd" id="3_audio"]
+
+[node name="Lander" type="RigidBody2D"]
+script = ExtResource("1_lander")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -16, 7, -16, 12, -9, 22, 14, -22, 14, -12, -9)
+
+[node name="Visual" type="Node2D" parent="."]
+script = ExtResource("2_visual")
+
+[node name="ThrustParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 10)
+emitting = false
+
+[node name="EngineAudio" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_audio")

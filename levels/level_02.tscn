@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://mjgu3msm0gxm"]
+
+[ext_resource type="Script" uid="uid://c35r0ave5xuw5" path="res://scripts/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/asteroid.tscn" id="2_asteroid"]
+[ext_resource type="PackedScene" path="res://scenes/landing_pad.tscn" id="3_pad"]
+
+[node name="Level02" type="Node2D" unique_id=764984253]
+script = ExtResource("1_level")
+level_name = "Island Hop"
+briefing = "Limited fuel. Burn early, then coast."
+fuel_capacity = 50.0
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=1855226126]
+position = Vector2(-912, 502)
+
+[node name="Start" parent="." unique_id=847728933 instance=ExtResource("2_asteroid")]
+position = Vector2(-702, 200)
+collision_mask = 0
+sync_to_physics = false
+radius = 180.0
+shape_seed = 8
+surface_gravity = 200.0
+
+[node name="Pebble" parent="." unique_id=675311090 instance=ExtResource("2_asteroid")]
+position = Vector2(-52, -3)
+collision_mask = 0
+sync_to_physics = false
+radius = 70.0
+roughness = 0.2
+shape_seed = 5
+surface_gravity = 100.0
+
+[node name="Target" parent="." unique_id=1877866095 instance=ExtResource("2_asteroid")]
+position = Vector2(750, -150)
+collision_mask = 0
+sync_to_physics = false
+radius = 220.0
+shape_seed = 21
+surface_gravity = 45.0
+
+[node name="LandingPad" parent="Target" unique_id=1331122671 instance=ExtResource("3_pad")]
+position = Vector2(-155.59998, -155.6)
+collision_mask = 0
+sync_to_physics = false

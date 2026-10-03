@@ -1,0 +1,33 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/asteroid.tscn" id="2_asteroid"]
+[ext_resource type="PackedScene" path="res://scenes/landing_pad.tscn" id="3_pad"]
+
+[node name="Level03" type="Node2D"]
+script = ExtResource("1_level")
+level_name = "Spin Cycle"
+briefing = "The asteroid rotates and a moon orbits it. Time your approach."
+fuel_capacity = 80.0
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(-700, -500)
+
+[node name="Spinner" parent="." instance=ExtResource("2_asteroid")]
+radius = 240.0
+shape_seed = 14
+surface_gravity = 45.0
+spin_speed = 10.0
+
+[node name="LandingPad" parent="Spinner" instance=ExtResource("3_pad")]
+position = Vector2(0, -240)
+
+[node name="Moon" parent="." node_paths=PackedStringArray("orbit_around") instance=ExtResource("2_asteroid")]
+position = Vector2(400, -400)
+radius = 60.0
+roughness = 0.25
+shape_seed = 2
+surface_gravity = 20.0
+gravity_range = 3.0
+orbit_around = NodePath("../Spinner")
+orbit_speed = 14.0
